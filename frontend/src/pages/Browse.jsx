@@ -23,7 +23,7 @@ const Browse = () => {
                 <h1 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '40px' }}>
                     Search Results ({allJobs.length})
                 </h1>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+                <div className="grid-responsive">
                     {
                         allJobs.map((job) => {
                             return (

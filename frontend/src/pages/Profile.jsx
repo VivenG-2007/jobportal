@@ -18,8 +18,8 @@ const Profile = () => {
             <Navbar />
             <div className="container" style={{ padding: '60px 0' }}>
                 <div className="glass" style={{ maxWidth: '900px', margin: '0 auto', padding: '40px', borderRadius: '1.5rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '40px' }}>
-                        <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+                    <div className="profile-header" style={{ marginBottom: '40px' }}>
+                        <div className="profile-info">
                             <div style={{
                                 width: '100px',
                                 height: '100px',
@@ -116,7 +116,7 @@ const Profile = () => {
                         ) : (
                             allAppliedJobs.map((application) => (
                                 <div key={application._id} className="glass" style={{ padding: '20px', borderRadius: '1rem', border: '1px solid var(--border)' }}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
+                                    <div className="applied-job-card">
                                         <div style={{ flex: 1 }}>
                                             <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '8px' }}>
                                                 {application.job?.title}

@@ -3,7 +3,7 @@ import { Search } from 'lucide-react';
 
 const HeroSection = () => {
     return (
-        <div style={{ textAlign: 'center', padding: '100px 0', background: 'radial-gradient(circle at top, rgba(99, 102, 241, 0.05) 0%, transparent 70%)' }}>
+        <div className="hero-section">
             <div className="container">
                 <span style={{
                     padding: '8px 16px',
@@ -15,25 +15,14 @@ const HeroSection = () => {
                 }}>
                     No. 1 Job Hunt Website
                 </span>
-                <h1 style={{ fontSize: '4rem', fontWeight: 800, marginTop: '24px', lineHeight: '1.1' }}>
+                <h1 className="hero-title">
                     Search, Apply & <br /> Get Your <span style={{ color: 'var(--primary)' }}>Dream Jobs</span>
                 </h1>
-                <p style={{ color: 'var(--muted)', fontSize: '1.2rem', marginTop: '16px', maxWidth: '600px', marginInline: 'auto' }}>
+                <p className="hero-subtitle">
                     Connecting talent with opportunity. Explore thousands of job listings from top companies around the globe.
                 </p>
 
-                <div style={{
-                    marginTop: '40px',
-                    maxWidth: '500px',
-                    marginInline: 'auto',
-                    display: 'flex',
-                    alignItems: 'center',
-                    backgroundColor: 'white',
-                    border: '1px solid var(--border)',
-                    borderRadius: '50px',
-                    padding: '6px 6px 6px 20px',
-                    boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)'
-                }}>
+                <div className="hero-search-container">
                     <input
                         type="text"
                         placeholder="Find your dream jobs"

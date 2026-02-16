@@ -30,7 +30,7 @@ const FilterCard = () => {
     };
 
     return (
-        <div className="glass" style={{ padding: '24px', borderRadius: '1rem', position: 'sticky', top: '90px' }}>
+        <div className="glass filter-card">
             <h1 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '20px' }}>Filter Jobs</h1>
             <hr style={{ border: 'none', borderTop: '1px solid var(--border)', marginBottom: '20px' }} />
             {filterData.map((data, index) => (

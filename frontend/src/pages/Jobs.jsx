@@ -27,14 +27,14 @@ const Jobs = () => {
         <div>
             <Navbar />
             <div className="container" style={{ padding: '40px 0' }}>
-                <div style={{ display: 'flex', gap: '2rem' }}>
-                    <div style={{ width: '20%' }}>
+                <div className="sidebar-layout">
+                    <div className="sidebar-container">
                         <FilterCard />
                     </div>
                     {
                         filterJobs.length <= 0 ? <span>Job not found</span> : (
-                            <div style={{ flex: 1, height: '88vh', overflowY: 'auto', paddingBottom: '20px' }}>
-                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+                            <div className="jobs-content" style={{ paddingBottom: '20px' }}>
+                                <div className="grid-responsive">
                                     {
                                         filterJobs.map((job) => (
                                             <motion.div

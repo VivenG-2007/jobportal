@@ -81,7 +81,7 @@ const JobDescription = () => {
         <div>
             <Navbar />
             <div className="container" style={{ padding: '60px 0' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+                <div className="job-description-header">
                     <div>
                         <h1 style={{ fontSize: '2.5rem', fontWeight: 800 }}>{singleJob?.title}</h1>
                         <div style={{ display: 'flex', gap: '0.5rem', marginTop: '12px' }}>
@@ -108,7 +108,7 @@ const JobDescription = () => {
                     </button>
                 </div>
 
-                <div className="glass" style={{ padding: '40px', borderRadius: '1.5rem' }}>
+                <div className="glass job-description-card">
                     <h2 style={{ fontSize: '1.5rem', borderBottom: '2px solid var(--border)', paddingBottom: '16px', marginBottom: '24px' }}>Job Description</h2>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                         <div>
