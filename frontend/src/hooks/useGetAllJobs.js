@@ -19,7 +19,12 @@ const useGetAllJobs = () => {
                 console.log(error);
             }
         }
-        fetchAllJobs();
+
+        const debounceHandler = setTimeout(() => {
+            fetchAllJobs();
+        }, 300);
+
+        return () => clearTimeout(debounceHandler);
     }, [dispatch, searchedQuery])
 }
 

@@ -8,21 +8,7 @@ const LatestJobCards = ({ job }) => {
     return (
         <div
             onClick={() => navigate(`/description/${job?._id}`)}
-            className="glass"
-            style={{
-                padding: '24px',
-                borderRadius: '1rem',
-                cursor: 'pointer',
-                transition: 'all 0.3s'
-            }}
-            onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = '0 10px 25px rgba(99, 102, 241, 0.15)';
-            }}
-            onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
-            }}
+            className="glass job-card-hover"
         >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
                 <div>
@@ -115,7 +101,7 @@ const LatestJobCards = ({ job }) => {
                     Save for Later
                 </button>
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -1,74 +1,78 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Login from './components/auth/Login'
-import Signup from './components/auth/Signup'
-import Home from './pages/Home'
-import Jobs from './pages/Jobs'
-import Browse from './pages/Browse'
-import Profile from './pages/Profile'
-import JobDescription from './pages/JobDescription'
-import Companies from './pages/admin/Companies'
-import CompanyCreate from './pages/admin/CompanyCreate'
-import CompanySetup from './pages/admin/CompanySetup'
-import AdminJobs from './pages/admin/AdminJobs'
-import PostJob from './pages/admin/PostJob'
-import Applicants from './pages/admin/Applicants'
-import ProtectedRoute from './components/shared/ProtectedRoute'
+import { lazy, Suspense } from 'react'
 import { Toaster } from 'react-hot-toast'
+import ProtectedRoute from './components/shared/ProtectedRoute'
+import Loading from './components/shared/Loading'
+
+// Lazy load components
+const Login = lazy(() => import('./components/auth/Login'))
+const Signup = lazy(() => import('./components/auth/Signup'))
+const Home = lazy(() => import('./pages/Home'))
+const Jobs = lazy(() => import('./pages/Jobs'))
+const Browse = lazy(() => import('./pages/Browse'))
+const Profile = lazy(() => import('./pages/Profile'))
+const JobDescription = lazy(() => import('./pages/JobDescription'))
+const Companies = lazy(() => import('./pages/admin/Companies'))
+const CompanyCreate = lazy(() => import('./pages/admin/CompanyCreate'))
+const CompanySetup = lazy(() => import('./pages/admin/CompanySetup'))
+const AdminJobs = lazy(() => import('./pages/admin/AdminJobs'))
+const PostJob = lazy(() => import('./pages/admin/PostJob'))
+const Applicants = lazy(() => import('./pages/admin/Applicants'))
 
 const appRouter = createBrowserRouter([
   {
     path: '/',
-    element: <Home />
+    element: <Suspense fallback={<Loading />}><Home /></Suspense>
   },
   {
     path: '/login',
-    element: <Login />
+    element: <Suspense fallback={<Loading />}><Login /></Suspense>
   },
   {
     path: '/signup',
-    element: <Signup />
+    element: <Suspense fallback={<Loading />}><Signup /></Suspense>
   },
   {
     path: '/jobs',
-    element: <Jobs />
+    element: <Suspense fallback={<Loading />}><Jobs /></Suspense>
   },
   {
     path: '/description/:id',
-    element: <JobDescription />
+    element: <Suspense fallback={<Loading />}><JobDescription /></Suspense>
   },
   {
     path: '/browse',
-    element: <Browse />
+    element: <Suspense fallback={<Loading />}><Browse /></Suspense>
   },
   {
     path: '/profile',
-    element: <ProtectedRoute><Profile /></ProtectedRoute>
+    element: <ProtectedRoute><Suspense fallback={<Loading />}><Profile /></Suspense></ProtectedRoute>
   },
 
   // Admin routes
   {
     path: "/admin/companies",
-    element: <ProtectedRoute><Companies /></ProtectedRoute>
+    element: <ProtectedRoute><Suspense fallback={<Loading />}><Companies /></Suspense></ProtectedRoute>
   },
   {
     path: "/admin/companies/create",
-    element: <ProtectedRoute><CompanyCreate /></ProtectedRoute>
+    element: <ProtectedRoute><Suspense fallback={<Loading />}><CompanyCreate /></Suspense></ProtectedRoute>
   },
   {
     path: "/admin/companies/:id",
-    element: <ProtectedRoute><CompanySetup /></ProtectedRoute>
+    element: <ProtectedRoute><Suspense fallback={<Loading />}><CompanySetup /></Suspense></ProtectedRoute>
   },
   {
     path: "/admin/jobs",
-    element: <ProtectedRoute><AdminJobs /></ProtectedRoute>
+    element: <ProtectedRoute><Suspense fallback={<Loading />}><AdminJobs /></Suspense></ProtectedRoute>
   },
   {
     path: "/admin/jobs/create",
-    element: <ProtectedRoute><PostJob /></ProtectedRoute>
+    element: <ProtectedRoute><Suspense fallback={<Loading />}><PostJob /></Suspense></ProtectedRoute>
   },
   {
     path: "/admin/jobs/:id/applicants",
-    element: <ProtectedRoute><Applicants /></ProtectedRoute>
+    element: <ProtectedRoute><Suspense fallback={<Loading />}><Applicants /></Suspense></ProtectedRoute>
   },
 ])
 
