@@ -2,21 +2,24 @@ import React from 'react';
 import { Bookmark, MapPin, Clock, DollarSign } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const Job = ({ job }) => {
+const daysAgoFunction = (mongodbTime) => {
+    if (!mongodbTime) return 0;
+    const createdAt = new Date(mongodbTime);
+    const today = new Date();
+    const diff = today - createdAt;
+    return Math.floor(diff / (1000 * 24 * 60 * 60));
+}
+
+const Job = React.memo(({ job }) => {
     const navigate = useNavigate();
 
-    const daysAgoFunction = (mongodbTime) => {
-        const createdAt = new Date(mongodbTime);
-        const today = new Date();
-        const diff = today - createdAt;
-        return Math.floor(diff / (1000 * 24 * 60 * 60));
-    }
+    const daysAgo = daysAgoFunction(job?.createdAt);
 
     return (
         <div className="glass" style={{ padding: '24px', borderRadius: '1rem', cursor: 'pointer' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                 <p style={{ fontSize: '0.875rem', color: 'var(--muted)' }}>
-                    {daysAgoFunction(job?.createdAt) === 0 ? "Today" : `${daysAgoFunction(job?.createdAt)} days ago`}
+                    {daysAgo === 0 ? "Today" : `${daysAgo} days ago`}
                 </p>
                 <button style={{ padding: '8px', border: '1px solid var(--border)', borderRadius: '50%' }}>
                     <Bookmark size={18} />
@@ -67,6 +70,6 @@ const Job = ({ job }) => {
             </div>
         </div>
     );
-};
+});
 
 export default Job;

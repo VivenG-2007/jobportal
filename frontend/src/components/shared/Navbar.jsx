@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LogOut, User, Briefcase, Menu, X } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
+import API from '../../utils/axios';
 import { setUser } from '../../redux/authSlice';
 import toast from 'react-hot-toast';
 
@@ -18,9 +18,7 @@ const Navbar = () => {
 
     const logoutHandler = async () => {
         try {
-            const res = await axios.get(`http://localhost:8000/api/v1/user/logout`, {
-                withCredentials: true
-            });
+            const res = await API.get(`/user/logout`);
             if (res.data.success) {
                 dispatch(setUser(null));
                 navigate("/");

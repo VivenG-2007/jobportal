@@ -2,7 +2,7 @@ import React from 'react';
 import { Briefcase, MapPin, Clock, DollarSign } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const LatestJobCards = ({ job }) => {
+const LatestJobCards = React.memo(({ job }) => {
     const navigate = useNavigate();
 
     return (
@@ -103,6 +103,6 @@ const LatestJobCards = ({ job }) => {
             </div>
         </div >
     );
-};
+});
 
 export default LatestJobCards;

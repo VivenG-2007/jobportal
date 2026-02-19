@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import LatestJobCards from './LatestJobCards';
 
 const LatestJobs = () => {
     const { allJobs } = useSelector(store => store.job);
+
+    const latestJobs = useMemo(() => {
+        return allJobs?.slice(0, 6) || [];
+    }, [allJobs]);
 
     return (
         <div className="container" style={{ padding: '80px 0' }}>
@@ -15,10 +19,10 @@ const LatestJobs = () => {
                 gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
                 gap: '1.5rem'
             }}>
-                {(!allJobs || allJobs.length <= 0) ? (
+                {latestJobs.length <= 0 ? (
                     <span>No Job Available</span>
                 ) : (
-                    allJobs?.slice(0, 6).map((job) => (
+                    latestJobs.map((job) => (
                         <LatestJobCards key={job._id} job={job} />
                     ))
                 )}

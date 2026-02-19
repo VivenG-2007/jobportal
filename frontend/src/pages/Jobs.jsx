@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import Navbar from '../components/shared/Navbar';
 import FilterCard from '../components/ui/FilterCard';
 import Job from '../components/Job';
@@ -7,20 +7,17 @@ import { motion } from 'framer-motion';
 
 const Jobs = () => {
     const { allJobs, searchedQuery } = useSelector(store => store.job);
-    const [filterJobs, setFilterJobs] = useState(allJobs);
 
-    useEffect(() => {
-        if (searchedQuery) {
-            const filteredJobs = allJobs.filter((job) => {
-                return job.title.toLowerCase().includes(searchedQuery.toLowerCase()) ||
-                    job.description.toLowerCase().includes(searchedQuery.toLowerCase()) ||
-                    job.location.toLowerCase().includes(searchedQuery.toLowerCase()) ||
-                    (job.salary && job.salary.toString().toLowerCase().includes(searchedQuery.toLowerCase()))
-            })
-            setFilterJobs(filteredJobs)
-        } else {
-            setFilterJobs(allJobs)
-        }
+    const filterJobs = useMemo(() => {
+        if (!searchedQuery) return allJobs;
+
+        const query = searchedQuery.toLowerCase();
+        return allJobs.filter((job) => {
+            return job.title.toLowerCase().includes(query) ||
+                job.description.toLowerCase().includes(query) ||
+                job.location.toLowerCase().includes(query) ||
+                (job.salary && job.salary.toString().toLowerCase().includes(query))
+        });
     }, [allJobs, searchedQuery]);
 
     return (

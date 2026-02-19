@@ -1,4 +1,4 @@
-import axios from 'axios'
+import API from '../utils/axios'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setAllJobs } from '../redux/jobSlice'
@@ -9,9 +9,7 @@ const useGetAllJobs = () => {
     useEffect(() => {
         const fetchAllJobs = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/api/v1/job/get?keyword=${searchedQuery}`, {
-                    withCredentials: true
-                });
+                const res = await API.get(`/job/get?keyword=${searchedQuery}`);
                 if (res.data.success) {
                     dispatch(setAllJobs(res.data.jobs));
                 }
